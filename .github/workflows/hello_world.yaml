@@ -1,0 +1,28 @@
+name: run main.py
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  helloo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: write hello world
+        run: echo "Helllooooo worllllllddddd"
+        shell: bash
+
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: gooodbye world
+        run: echo "goooooooodbyyyyyyeeee woooooorrrrrllllldddd"
+        shell: bash
+        

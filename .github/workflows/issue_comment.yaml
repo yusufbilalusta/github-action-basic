@@ -20,5 +20,22 @@ jobs:
               - With GitHub **Markdown** :sparkles:
               - Created by [create-or-update-comment][1]
 
+  comment-with-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create comment with api
+        run: |
+          gh api -X POST \
+            http://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments \
+            -f body='Comment but from the api call not action.'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: ${{ github.event.organization.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+
+
+
   
         
